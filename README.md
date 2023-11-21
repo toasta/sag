@@ -2,7 +2,8 @@
 
 wordlist from https://github.com/taikuukaits/SimpleWordlists/tree/master
 
-```./t.py
+```
+./t.py
 odd owl
 lay lit
 two tar
