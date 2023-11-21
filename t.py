@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+
 import re
 import random
 
@@ -20,20 +22,29 @@ for (i,j) in parse.items():
             d[i].append(k)
             dfl[i][fl].append(k)
 
-ao=['adjectives', 'nouns']
+ao=[
+        ['adjectives', 'adjectives', 'nouns'],
+        ['adjectives', 'nouns'],
+    ]
 
-cc1=set( dfl[ao[0]].keys() )
-cc1=cc1.intersection(set( dfl[ao[1]].keys() ))
+cc1=set( dfl['adjectives'].keys() )
+cc1=cc1.intersection(set( dfl['nouns'].keys() ))
 
 cc1 = list(cc1)
 
-count=100
+count=1000
+res=[]
 while count > 0:
     fl = random.choice(cc1)
     for j in ao:
-        print(random.choice(dfl[j][fl]), end=' ')
-    print()
+        s=[]
+        for k in j:
+            s.append(random.choice(dfl[k][fl]))
+        s2 = " ".join(s)
+        res.append(s2)
     count -= 1
 
+res = sorted(res, key = lambda x: len(x))
 
-
+for i in res:
+    print(i)
